@@ -1,4 +1,4 @@
-<div class="panel  {{pc.isPalindrome() ? 'panel-success' : 'panel-danger'}} ">
+<div class="panel  {{pc.isPalindrome() ? 'panel-success' : 'panel-danger'}} palindrome" >
 	<div class="panel-heading">
 		<h4 class="panel-title"><span class="glyphicon {{pc.isPalindrome() ? 'glyphicon-check' : 'glyphicon-ban-circle'}}"> </span> {{pc.palindrome.text}} </h4>
 	</div>
@@ -6,14 +6,9 @@
 	<div class="panel-body">
 		<div class="row ">
 			<div class="col-md-10">
-				<!--<div class="alert alert-info">-->
-				?Smoothed: {{pc.smoothed()[0]}}<span class="standout">{{pc.smoothed()[1]}}</span>{{pc.smoothed()[2]}}
+				Smoothed: {{pc.smoothed()[0]}}<span class="standout">{{pc.smoothed()[1]}}</span>{{pc.smoothed()[2]}}
 				<br>
 				Length: {{pc.palindrome.smooth.length}}
-				<br>where are you ?????
-				<div>
-					where is this
-				</div>
 			</div>
 		</div>
 	</div>

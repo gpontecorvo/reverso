@@ -1,5 +1,4 @@
-<div class="container"
-ng-init="pc.midpoint.text=8">
+<div class="container" ng-init="pc.midpoint.text=8">
 	<div class="row">
 		<div class="col-md-10">
 			<h2>Palindromes</h2>
@@ -10,25 +9,20 @@ ng-init="pc.midpoint.text=8">
 		</div>
 		<div class="row">
 			<div class="col-md-6">
-				Search:
-				<input ng-model="pc.query"/>
-				matches
-				{{(plc.palindromes | filter:pc.query).length}} {{plc.pluralize('palindrome', (plc.palindromes |
-				filter:pc.query).length)}}
+				Search: <input ng-model="pc.query" /> matches {{(plc.palindromes |
+				filter:pc.query).length}} {{plc.pluralize('palindrome',
+				(plc.palindromes | filter:pc.query).length)}}
 
 
 			</div>
 		</div>
 		<div class="row">
 			<div class="col-md-3 ui-slider">
-				Turnaround chars: 
-				even: {{pc.midpoint.text}},
-				odd: {{(pc.midpoint.text - 1) > 0 ? pc.midpoint.text - 1 : 0}}
+				Turnaround chars: even: {{pc.midpoint.text}}, odd:
+				{{(pc.midpoint.text - 1) > 0 ? pc.midpoint.text - 1 : 0}} <br>
 				<br>
-				<br>
-				<rzslider
-				rz-slider-model="pc.midpoint.text"
-				rz-slider-options="plc.turnaroundLengthSlider.options"></rzslider>
+				<rzslider rz-slider-model="pc.midpoint.text"
+					rz-slider-options="plc.turnaroundLengthSlider.options"></rzslider>
 			</div>
 		</div>
 		<div class="row">
@@ -36,7 +30,8 @@ ng-init="pc.midpoint.text=8">
 		</div>
 		<div class="palBackground">
 			<div class="scrollbox">
-				<div ng-repeat="pal in plc.palindromes | filter:pc.query" style="margin: 15px 15px 0 15px;">
+				<div ng-repeat="pal in plc.palindromes | filter:pc.query"
+					style="margin: 15px 15px 0 15px;">
 					<div class="row">
 						<div class="col-md-12">
 							<palindrome palindrome="pal" midpoint="pc.midpoint"></palindrome>
@@ -46,4 +41,3 @@ ng-init="pc.midpoint.text=8">
 			</div>
 		</div>
 	</div>
-

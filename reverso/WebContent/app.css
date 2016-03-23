@@ -48,10 +48,8 @@ body {
 }
 
 .palindrome {
-    padding: 3px;
      border-radius: 5px;
     border: thin solid black;
-    margin: 3px;
 }
 
 .alert {
