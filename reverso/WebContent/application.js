@@ -13,9 +13,13 @@
         this.who = 'World';
     }
 
-  angular.module("myApp", ["palindromes", "ngRoute", "rzModule", "ui.bootstrap"])
+  angular.module("reverso", ["palindromes", "ngRoute", "rzModule", "ui.bootstrap", "backand"])
      .config(
-            function ($routeProvider) {
+            function ($routeProvider, BackandProvider) {
+			      BackandProvider.setAppName('reverso');
+			      BackandProvider.setSignUpToken('000e7820-dca2-41f1-820f-a612011dc62e');
+			      BackandProvider.setAnonymousToken('bddbb5e7-ecfa-433e-8d61-5e4de7af161f');
+            	
                 $routeProvider.
                 when('/welcome', {
                     //routes define one "implicit component" per page
@@ -41,12 +45,7 @@
                     redirectTo: '/welcome'
                 });
             })
-//            .config(function (BackandProvider) {
-//        BackandProvider.setAppName('reverso');
-//        BackandProvider.setSignUpToken('000e7820-dca2-41f1-820f-a612011dc62e');
-//        BackandProvider.setAnonymousToken('bddbb5e7-ecfa-433e-8d61-5e4de7af161f');
-//    })
-      .controller('WelcomeController', WelcomeController);
+            .controller('WelcomeController', WelcomeController);
 
 
 

@@ -1,7 +1,7 @@
 (function (angular) {
     "use strict";
 
-    function PalindromeService($http, $timeout, $interval, $q) {
+    function PalindromeService($http, $timeout, $interval, $q, Backand) {
         var url = 'demo-data/palindromes.json';
 
         var ps = this;
@@ -15,25 +15,38 @@
         ps.midpoint = [];
         ps.midpoint = [];
         
-        var workerPromise =  $http.get(url).then(unwrapResponse);
+        // var workerPromise =  $http.get(url).then(unwrapResponse);
+        var workerPromise =  $http({
+            method: 'GET',
+            url: Backand.getApiUrl() + '/1/objects/' + "palindromes",
+            params: {
+              pageSize: 500,
+              pageNumber: 1
+//              ,
+//              filter: filter || '',
+//              sort: sort || ''
+            }
+          }).then(unwrapResponse);
  
         function unwrapResponse (response) {
-        	for (var pal in response.data) {
-        		   if ( response.data.hasOwnProperty(pal)) {
-        		      var obj = response.data[pal];
+        	var results = response.data["data"];
+        	for (var pal in results) {
+        		   if ( results.hasOwnProperty(pal)) {
+        		      var obj = results[pal];
         		      obj.smooth = obj.text.replace(/[^\w]/g, "").toUpperCase();
          		   }      	
         	}
-            return  response.data;
+            return  results;
         }
         ps.getList = function () {
             return workerPromise;
         };
         
-//        ps.getList = function(name, sort, filter) {
-//            return $http({
+//        ps.getList = function(sort, filter) {
+//        	
+//        	var responseObj = $http({
 //                method: 'GET',
-//                url: Backand.getApiUrl() + '/1/objects/' + name,
+//                url: Backand.getApiUrl() + '/1/objects/' + "palindromes",
 //                params: {
 //                  pageSize: 160,
 //                  pageNumber: 1,
@@ -41,6 +54,7 @@
 //                  sort: sort || ''
 //                }
 //              });
+//            return unwrapResponse(responseObj);
 //            };
 
     }
