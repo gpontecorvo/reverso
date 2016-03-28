@@ -21,18 +21,17 @@
             url: Backand.getApiUrl() + '/1/objects/' + "palindromes",
             params: {
               pageSize: 500,
-              pageNumber: 1
-//              ,
-//              filter: filter || '',
-//              sort: sort || ''
+              pageNumber: 1,
+              filter: null,
+              sort: ''
             }
           }).then(unwrapResponse);
  
         function unwrapResponse (response) {
         	var results = response.data["data"];
-        	for (var pal in results) {
-        		   if ( results.hasOwnProperty(pal)) {
-        		      var obj = results[pal];
+        	for (var index in results) {
+        		   if ( results.hasOwnProperty(index)) {
+        		      var obj = results[index];
         		      obj.smooth = obj.text.replace(/[^\w]/g, "").toUpperCase();
          		   }      	
         	}
@@ -80,6 +79,13 @@
         function isPalindrome() {
          	var str = pc.palindrome.smooth;
     		return  str == str.split('').reverse().join('');
+    	}
+    	pc.reverse = reverse;
+       function reverse() {
+         	var str = pc.palindrome.text;
+ 		    str = str.replace(/[^\w]/g, "").toUpperCase();
+
+    		return str.split('').reverse().join(' ');
     	}
     	
     }
@@ -151,8 +157,6 @@
             controller: 'PalindromeController',
             controllerAs: 'pc'
         })
-
-
         .controller('PalindromeController',PalindromeController)
         .controller('PalindromeListController',PalindromeListController);
     //.factory("promiseSleep", function ($timeout) {

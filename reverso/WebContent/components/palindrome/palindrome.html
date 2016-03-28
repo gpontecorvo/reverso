@@ -1,16 +1,29 @@
-<div class="panel  {{pc.isPalindrome() ? 'panel-success' : 'panel-danger'}} palindrome" >
+<div class="panel  {{pc.isPalindrome() ? 'panel-success' : 'panel-danger'}} palindrome">
 	<div class="panel-heading">
-		<h4 class="panel-title"><span class="glyphicon {{pc.isPalindrome() ? 'glyphicon-check' : 'glyphicon-ban-circle'}}"> </span> {{pc.palindrome.text}} </h4>
+		<h4 class="panel-title">
+			<span
+				class="glyphicon {{pc.isPalindrome() ? 'glyphicon-check' : 'glyphicon-ban-circle'}}">
+			</span> {{pc.palindrome.text}}
+		</h4>
 	</div>
 
 	<div class="panel-body">
-		<div class="row ">
+		<div class="row">
+			<div class="col-md-10">
+				<textarea cols="80" rows="3" ng-model="pc.palindrome.text"></textarea>>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-10">
+				Reversed: {{pc.reverse()}}
+			</div>
+		</div>
+		<div class="row">		
 			<div class="col-md-10">
 				Smoothed: {{pc.smoothed()[0]}}<span class="standout">{{pc.smoothed()[1]}}</span>{{pc.smoothed()[2]}}
-				<br>
-				Length: {{pc.palindrome.smooth.length}}
+				<br> Length: {{pc.palindrome.smooth.length}}
 			</div>
 		</div>
 	</div>
-	
+
 </div>
