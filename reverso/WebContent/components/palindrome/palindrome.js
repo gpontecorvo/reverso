@@ -77,6 +77,7 @@
     	
     	pc.isPalindrome = isPalindrome;
         function isPalindrome() {
+        	pc.palindrome.smooth = pc.palindrome.text.replace(/[^\w]/g, "").toUpperCase();
          	var str = pc.palindrome.smooth;
     		return  str == str.split('').reverse().join('');
     	}

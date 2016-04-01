@@ -1,8 +1,13 @@
-<div class="panel  {{pc.isPalindrome() ? 'panel-success' : 'panel-danger'}} palindrome">
+<div 
+ng-class="pc.isPalindrome() ?  ' panel palindrome panel-success' : ' panel palindrome panel-danger' ">
+
+                <!-- ' panel palindrome' ' glyphicon'  -->
+                
+
 	<div class="panel-heading">
 		<h4 class="panel-title">
 			<span
-				class="glyphicon {{pc.isPalindrome() ? 'glyphicon-check' : 'glyphicon-ban-circle'}}">
+			ng-class="pc.isPalindrome() ? 'glyphicon glyphicon-check' : 'glyphicon glyphicon-ban-circle'  ">
 			</span> {{pc.palindrome.text}}
 		</h4>
 	</div>
@@ -10,7 +15,9 @@
 	<div class="panel-body">
 		<div class="row">
 			<div class="col-md-10">
-				<textarea cols="80" rows="3" ng-model="pc.palindrome.text"></textarea>>
+			   {{pc.palindrome.id}}<br>
+				<textarea id="text_{{pc.palindrome.id}}" cols="80" rows="3" ng-model="pc.palindrome.text">
+				</textarea>>
 			</div>
 		</div>
 		<div class="row">
