@@ -40,7 +40,7 @@
         ps.getList = function () {
             return workerPromise;
         };
-        
+
 //        ps.getList = function(sort, filter) {
 //        	
 //        	var responseObj = $http({
@@ -65,6 +65,7 @@
     	//var smoothTemp = pc.smoothed();
     	//pc.palindrome.smooth =  (smoothTemp[0] + smoothTemp[1] + smoothTemp[2]).trim();
         function smoothIt() {
+            updateSmooth();
         	var smootharray = isolateMidpoint(pc.palindrome.smooth, Number(pc.midpoint.text));
         	for(var i = 0; i < smootharray.length; i++){
         		smootharray[i] = smootharray[i].split('').join(' ') + ' ';
@@ -73,12 +74,14 @@
     		return smootharray;
     	}
 
-
+        function updateSmooth() {
+            pc.palindrome.smooth = pc.palindrome.text.replace(/[^\w]/g, "").toUpperCase();
+            return pc.palindrome.smooth;
+        }
     	
     	pc.isPalindrome = isPalindrome;
         function isPalindrome() {
-        	pc.palindrome.smooth = pc.palindrome.text.replace(/[^\w]/g, "").toUpperCase();
-         	var str = pc.palindrome.smooth;
+         	var str = updateSmooth();
     		return  str == str.split('').reverse().join('');
     	}
     	pc.reverse = reverse;
@@ -134,8 +137,7 @@
             beg = ((input.length  - midpointSize)/2) + remainder;
             end = beg + midpointSize - remainder;
         }
-        var output = [input.slice(0, beg), input.slice(beg,end), input.slice(end, input.length)];
-        return output;   
+        return [input.slice(0, beg), input.slice(beg,end), input.slice(end, input.length)];
     }
     angular.module("palindromes", [])
         .service('palindromeService', PalindromeService)
